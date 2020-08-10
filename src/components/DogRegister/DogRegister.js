@@ -56,37 +56,49 @@ class DogRegister extends Component {
         <div>
           <label htmlFor="energy_level">
             Energy Level:
-            <input
-              type="text"
+            <select
               name="energy_level"
-              value={this.state.energy_level}
-              required
               onChange={this.handleInputChangeFor('energy_level')}
-            />
+            >
+              <option value={this.state.energy_level}>X-Small</option>
+              <option value={this.state.energy_level}>Small</option>
+              <option value={this.state.energy_level}>Medium</option>
+            </select>
           </label>
         </div>
         <div>
           <label htmlFor="size">
             Size:
-            <input
-              type="text"
+            <select
               name="size"
-              value={this.state.size}
               required
               onChange={this.handleInputChangeFor('size')}
-            />
+            >
+              <option value={this.state.size}>X-Small</option>
+              <option value={this.state.size}>Small</option>
+              <option value={this.state.size}>Medium</option>
+              <option value={this.state.size}>Large</option>
+              <option value={this.state.size}>X-Large</option>
+            </select>
           </label>
         </div>
         <div>
           <label htmlFor="play_style">
             Play-style:
-            <input
-              type="text"
+            <select
               name="play_style"
               value={this.state.play_style}
               required
               onChange={this.handleInputChangeFor('play_style')}
-            />
+            >
+              <option value={this.state.play_style}>Just likes company</option>
+              <option value={this.state.play_style}>Loves Tug</option>
+              <option value={this.state.play_style}>Plays Chase</option>
+              <option value={this.state.play_style}>
+                Body slams and Wrestling
+              </option>
+              <option value={this.state.play_style}>Other</option>
+            </select>
           </label>
         </div>
         <div>
@@ -112,3 +124,5 @@ class DogRegister extends Component {
     );
   }
 }
+
+export default connect(mapStoreToProps)(DogRegister);
