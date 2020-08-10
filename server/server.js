@@ -12,6 +12,7 @@ const redis = require('redis');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const dogRouter = require('./routes/dog.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,6 +27,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/dog', dogRouter);
 
 // Serve static files
 app.use(express.static('build'));
