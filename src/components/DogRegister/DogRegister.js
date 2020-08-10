@@ -57,7 +57,7 @@ class DogRegister extends Component {
           <label htmlFor="energy_level">
             Energy Level:
             <input
-              type=""
+              type="text"
               name="energy_level"
               value={this.state.energy_level}
               required
@@ -69,7 +69,7 @@ class DogRegister extends Component {
           <label htmlFor="size">
             Size:
             <input
-              type=""
+              type="text"
               name="size"
               value={this.state.size}
               required
@@ -81,7 +81,7 @@ class DogRegister extends Component {
           <label htmlFor="play_style">
             Play-style:
             <input
-              type=""
+              type="text"
               name="play_style"
               value={this.state.play_style}
               required
@@ -93,7 +93,7 @@ class DogRegister extends Component {
           <label htmlFor="description">
             Description:
             <input
-              type=""
+              type="text"
               name="description"
               value={this.state.description}
               onChange={this.handleInputChangeFor('description')}

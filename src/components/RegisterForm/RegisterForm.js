@@ -67,7 +67,7 @@ class RegisterForm extends Component {
           <label htmlFor="email">
             Email:
             <input
-              type="email"
+              type="text"
               name="email"
               value={this.state.email}
               required
@@ -79,7 +79,7 @@ class RegisterForm extends Component {
           <label htmlFor="location">
             Location:
             <input
-              type="location"
+              type="text"
               name="location"
               value={this.state.location}
               required
