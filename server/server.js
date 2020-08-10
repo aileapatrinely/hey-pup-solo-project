@@ -10,6 +10,8 @@ const passport = require('./strategies/user.strategy');
 const io = require('socket.io');
 const redis = require('redis');
 
+const UploaderS3Router = require('react-dropzone-s3-uploader');
+
 // Route includes
 const userRouter = require('./routes/user.router');
 const dogRouter = require('./routes/dog.router');
@@ -17,6 +19,17 @@ const dogRouter = require('./routes/dog.router');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//s3 uploader
+app.use(
+  's3',
+  UploaderS3Router({
+    bucket: 'hey-pup',
+    region: 'us-east-2',
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    ACL: 'public-read',
+  })
+);
 
 // Passport Session Configuration //
 app.use(sessionMiddleware);
