@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import ImageUploader from '../ImageUploader/ImageUploader';
 
 class DogRegister extends Component {
   state = {
@@ -111,6 +112,9 @@ class DogRegister extends Component {
               onChange={this.handleInputChangeFor('description')}
             />
           </label>
+        </div>
+        <div>
+          <ImageUploader />
         </div>
         <div>
           <input
