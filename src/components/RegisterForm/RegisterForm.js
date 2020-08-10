@@ -6,6 +6,8 @@ class RegisterForm extends Component {
   state = {
     username: '',
     password: '',
+    email: '',
+    location: '',
   };
 
   registerUser = (event) => {
@@ -16,28 +18,24 @@ class RegisterForm extends Component {
       payload: {
         username: this.state.username,
         password: this.state.password,
+        email: this.state.email,
+        location: this.state.location,
       },
     });
-  } // end registerUser
+  }; // end registerUser
 
-  handleInputChangeFor = propertyName => (event) => {
+  handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
-  }
+  };
 
   render() {
     return (
-      <form
-        className="formPanel"
-        onSubmit={this.registerUser}
-      >
+      <form className="formPanel" onSubmit={this.registerUser}>
         <h2>Register User</h2>
         {this.props.errors.registrationMessage && (
-          <h3
-            className="alert"
-            role="alert"
-          >
+          <h3 className="alert" role="alert">
             {this.props.errors.registrationMessage}
           </h3>
         )}
@@ -62,6 +60,30 @@ class RegisterForm extends Component {
               value={this.state.password}
               required
               onChange={this.handleInputChangeFor('password')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="email">
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={this.state.email}
+              required
+              onChange={this.handleInputChangeFor('email')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="location">
+            Location:
+            <input
+              type="location"
+              name="location"
+              value={this.state.location}
+              required
+              onChange={this.handleInputChangeFor('location')}
             />
           </label>
         </div>
