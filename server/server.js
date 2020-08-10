@@ -1,4 +1,3 @@
-
 const express = require('express');
 require('dotenv').config();
 
@@ -7,6 +6,9 @@ const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
 
 const passport = require('./strategies/user.strategy');
+
+const io = require('socket.io');
+const redis = require('redis');
 
 // Route includes
 const userRouter = require('./routes/user.router');
