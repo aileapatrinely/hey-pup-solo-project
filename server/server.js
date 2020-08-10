@@ -10,7 +10,7 @@ const passport = require('./strategies/user.strategy');
 const io = require('socket.io');
 const redis = require('redis');
 
-const UploaderS3Router = require('react-dropzone-s3-uploader');
+const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 
 // Route includes
 const userRouter = require('./routes/user.router');
