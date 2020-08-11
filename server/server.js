@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //s3 uploader
 app.use(
-  's3',
+  '/s3',
   UploaderS3Router({
     bucket: 'hey-pup',
     region: 'us-east-2',
