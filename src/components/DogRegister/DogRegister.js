@@ -61,9 +61,9 @@ class DogRegister extends Component {
               name="energy_level"
               onChange={this.handleInputChangeFor('energy_level')}
             >
-              <option value={this.state.energy_level}>X-Small</option>
-              <option value={this.state.energy_level}>Small</option>
+              <option value={this.state.energy_level}>Low</option>
               <option value={this.state.energy_level}>Medium</option>
+              <option value={this.state.energy_level}>High</option>
             </select>
           </label>
         </div>
