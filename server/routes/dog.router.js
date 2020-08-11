@@ -5,7 +5,9 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/mydog', (req, res) => {});
+router.get('/', (req, res) => {
+  res.send(req.dog);
+});
 
 /**
  * POST route template

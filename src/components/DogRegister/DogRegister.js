@@ -10,7 +10,7 @@ class DogRegister extends Component {
     size: '',
     play_style: '',
     description: '',
-    owner_id: this.props.user.id,
+    owner_id: '',
   };
 
   registerDog = (event) => {
