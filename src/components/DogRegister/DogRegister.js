@@ -88,8 +88,6 @@ class DogRegister extends Component {
             Play-style:
             <select
               name="play_style"
-              value={this.state.play_style}
-              required
               onChange={this.handleInputChangeFor('play_style')}
             >
               <option value={this.state.play_style}>Just likes company</option>
