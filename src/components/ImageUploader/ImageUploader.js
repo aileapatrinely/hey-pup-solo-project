@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 
 class ImageUploader extends Component {
+  handleFinishedUpload = (info) => {
+    console.log('File uploaded with filename', info.filename);
+    console.log('Access it on S3 at', info.fileUrl);
+
+    this.props.dispatch({ type: 'POST_IMG_URL', payload: info.fileurl });
+  };
   render() {
     const uploadOptions = {
       server: 'http://localhost:5000',

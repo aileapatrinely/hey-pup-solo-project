@@ -16,11 +16,19 @@ router.post('/register', (req, res) => {
   const size = req.body.size;
   const play_style = req.body.play_style;
   const description = req.body.description;
+  const owner_id = req.body.owner_id;
 
   const queryText =
-    'INSERT INTO "dog" (name, energy_level, size, play_style, description) VALUES ($1, $2, $3, $4, $5)';
+    'INSERT INTO "dog" (name, energy_level, size, play_style, description, owner_id) VALUES ($1, $2, $3, $4, $5, $6)';
   pool
-    .query(queryText, [name, energy_level, size, play_style, description])
+    .query(queryText, [
+      name,
+      energy_level,
+      size,
+      play_style,
+      description,
+      owner_id,
+    ])
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(500));
 });

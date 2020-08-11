@@ -4,7 +4,14 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class MyDog extends Component {
   render() {
-    return <div>This will be some stuff</div>;
+    return (
+      <div>
+        <h3>{}</h3>
+        <p>Gonna have dog picture</p>
+        <p>gonna have dog info</p>
+        <p>gonna have dog description</p>
+      </div>
+    );
   }
 }
 

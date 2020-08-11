@@ -10,6 +10,7 @@ class DogRegister extends Component {
     size: '',
     play_style: '',
     description: '',
+    owner_id: this.props.user.id,
   };
 
   registerDog = (event) => {
@@ -23,6 +24,7 @@ class DogRegister extends Component {
         size: this.state.size,
         play_style: this.state.play_style,
         description: this.state.description,
+        owner_id: this.props.user.id,
       },
     });
   }; // end registerUser
@@ -61,9 +63,9 @@ class DogRegister extends Component {
               name="energy_level"
               onChange={this.handleInputChangeFor('energy_level')}
             >
-              <option value={this.state.energy_level}>Low</option>
-              <option value={this.state.energy_level}>Medium</option>
-              <option value={this.state.energy_level}>High</option>
+              <option value={this.state.energy_level.low}>Low</option>
+              <option value={this.state.energy_level.medium}>Medium</option>
+              <option value={this.state.energy_level.high}>High</option>
             </select>
           </label>
         </div>
@@ -75,11 +77,11 @@ class DogRegister extends Component {
               required
               onChange={this.handleInputChangeFor('size')}
             >
-              <option value={this.state.size}>X-Small</option>
-              <option value={this.state.size}>Small</option>
-              <option value={this.state.size}>Medium</option>
-              <option value={this.state.size}>Large</option>
-              <option value={this.state.size}>X-Large</option>
+              <option value={this.state.size.xsmall}>X-Small</option>
+              <option value={this.state.size.small}>Small</option>
+              <option value={this.state.size.medium}>Medium</option>
+              <option value={this.state.size.large}>Large</option>
+              <option value={this.state.size.xlarge}>X-Large</option>
             </select>
           </label>
         </div>
@@ -90,13 +92,17 @@ class DogRegister extends Component {
               name="play_style"
               onChange={this.handleInputChangeFor('play_style')}
             >
-              <option value={this.state.play_style}>Just likes company</option>
-              <option value={this.state.play_style}>Loves Tug</option>
-              <option value={this.state.play_style}>Plays Chase</option>
-              <option value={this.state.play_style}>
+              <option value={this.state.play_style.justlikescompany}>
+                Just likes company
+              </option>
+              <option value={this.state.play_style.lovestug}>Loves Tug</option>
+              <option value={this.state.play_style.playschase}>
+                Plays Chase
+              </option>
+              <option value={this.state.play_style.bodyslamsandwrestling}>
                 Body slams and Wrestling
               </option>
-              <option value={this.state.play_style}>Other</option>
+              <option value={this.state.play_style.other}>Other</option>
             </select>
           </label>
         </div>
