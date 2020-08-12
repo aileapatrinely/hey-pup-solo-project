@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ImageUploader from '../ImageUploader/ImageUploader';
+import InfoPage from '../InfoPage/InfoPage';
+import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 
 class DogRegister extends Component {
   state = {
@@ -11,9 +13,14 @@ class DogRegister extends Component {
     play_style: '',
     description: '',
     owner_id: '',
+    picture: '',
   };
-
-  registerDog = (event) => {
+  handleFinishedUpload = (info) => {
+    console.log('File uploaded with filename', info.filename);
+    console.log('Access it on S3 at', info.fileUrl);
+    this.registerDog(info.fileUrl);
+  };
+  registerDog = (image) => (event) => {
     event.preventDefault();
 
     this.props.dispatch({
@@ -25,6 +32,7 @@ class DogRegister extends Component {
         play_style: this.state.play_style,
         description: this.state.description,
         owner_id: this.props.user.id,
+        picture: image,
       },
     });
   }; // end registerUser
@@ -36,6 +44,15 @@ class DogRegister extends Component {
   };
 
   render() {
+    const uploadOptions = {
+      server: 'http://localhost:5000',
+      //   signingUrlQueryParams: {
+      //     uploadType: 'avatar',
+      //   },
+    };
+
+    const s3Url = 'https://hey-pup.s3.amazonaws.com';
+
     return (
       <form className="formPanel" onSubmit={this.registerDog}>
         <h2>Register Dog</h2>
@@ -118,7 +135,12 @@ class DogRegister extends Component {
           </label>
         </div>
         <div>
-          <ImageUploader />
+          <DropzoneS3Uploader
+            onFinish={this.handleFinishedUpload}
+            s3Url={s3Url}
+            maxSize={1024 * 1024 * 5}
+            upload={uploadOptions}
+          />
         </div>
         <div>
           <input

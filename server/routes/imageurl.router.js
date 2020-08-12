@@ -13,8 +13,8 @@ router.get('/', (req, res) => {});
 router.post('/', (req, res) => {
   console.log(req.body);
   const imageUrl = req.body.imageUrl;
-  const queryString = `INSERT INTO "dog" ("picture") VALUES ($1) WHERE "owner_id"=$2`;
-  pool.query(queryString, [imageUrl, this.state.user.id]);
+  const queryString = `INSERT INTO "image" (picture) VALUES ($1);`;
+  pool.query(queryString, [imageUrl]);
   res.sendStatus(200);
 });
 
