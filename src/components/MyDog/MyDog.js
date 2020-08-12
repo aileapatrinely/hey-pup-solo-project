@@ -20,7 +20,7 @@ class MyDog extends Component {
         </div>
       );
     });
-    return <div>One day, I'll figure out maps.</div>;
+    return <div>{myDog}</div>;
   }
 }
 
