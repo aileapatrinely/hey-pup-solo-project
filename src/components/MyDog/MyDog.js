@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class MyDog extends Component {
   render() {
-    return (
-      <div>
-        <h3>{}</h3>
-        <p>Gonna have dog picture</p>
-        <p>gonna have dog info</p>
-        <p>gonna have dog description</p>
-      </div>
-    );
+    const myDog = this.props.store.dog.map((item, index) => {
+      return (
+        <div>
+          <h3>{item.name}</h3>
+          <p>Replace with picture</p>
+          <p>{item.size}</p>
+          <p>{item.energy_level}</p>
+          <p>{item.play_style}</p>
+          <p>{item.description}</p>
+        </div>
+      );
+    });
+    return <div>{myDog}</div>;
   }
 }
+
+const mapStoreToProps = (store) => ({ store });
 
 export default connect(mapStoreToProps)(MyDog);
