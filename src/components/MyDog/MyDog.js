@@ -10,7 +10,7 @@ class MyDog extends Component {
     console.log('dog', this.props.store.dog);
     const myDog = this.props.store.dog.map((item, index) => {
       return (
-        <div>
+        <div key={index}>
           <h3>{item.name}</h3>
           <p>Replace with picture</p>
           <p>{item.size}</p>
