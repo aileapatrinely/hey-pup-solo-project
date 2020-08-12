@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class MyDog extends Component {
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_DOG' });
+  }
+
   render() {
+    console.log('dog', this.props.store.dog);
     const myDog = this.props.store.dog.map((item, index) => {
       return (
         <div>
@@ -15,7 +20,7 @@ class MyDog extends Component {
         </div>
       );
     });
-    return <div>{myDog}</div>;
+    return <div>One day, I'll figure out maps.</div>;
   }
 }
 
