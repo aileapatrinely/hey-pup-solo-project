@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ImageUploader from '../ImageUploader/ImageUploader';
+import InfoPage from '../InfoPage/InfoPage';
 
 class DogRegister extends Component {
   state = {
@@ -11,6 +12,7 @@ class DogRegister extends Component {
     play_style: '',
     description: '',
     owner_id: '',
+    picture: '',
   };
 
   registerDog = (event) => {
@@ -25,6 +27,7 @@ class DogRegister extends Component {
         play_style: this.state.play_style,
         description: this.state.description,
         owner_id: this.props.user.id,
+        picture: this.props.store.dogImage,
       },
     });
   }; // end registerUser

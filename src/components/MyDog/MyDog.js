@@ -12,7 +12,7 @@ class MyDog extends Component {
       return (
         <div>
           <h3>{item.name}</h3>
-          <p>Replace with picture</p>
+          <img src={item.picture} />
           <p>{item.size}</p>
           <p>{item.energy_level}</p>
           <p>{item.play_style}</p>
@@ -20,7 +20,7 @@ class MyDog extends Component {
         </div>
       );
     });
-    return <div>One day, I'll figure out maps.</div>;
+    return <div>{myDog}</div>;
   }
 }
 

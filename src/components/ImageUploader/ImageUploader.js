@@ -7,7 +7,7 @@ class ImageUploader extends Component {
     console.log('File uploaded with filename', info.filename);
     console.log('Access it on S3 at', info.fileUrl);
 
-    this.props.dispatch({ type: 'POST_IMG_URL', payload: info.fileurl });
+    this.props.dispatch({ type: 'SET_DOG_IMAGE', payload: info.fileUrl });
   };
   render() {
     const uploadOptions = {

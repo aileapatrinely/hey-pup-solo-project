@@ -4,10 +4,11 @@ require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
+const httpServer = http.createServer(app);
 
 const passport = require('./strategies/user.strategy');
 
-const io = require('socket.io');
+const io = SocketIO(httpServer);
 const redis = require('redis');
 
 const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
@@ -49,6 +50,33 @@ app.use(express.static('build'));
 
 // App Set //
 const PORT = process.env.PORT || 5000;
+
+//Socket.io Connection
+socket.on('JOIN_CHAT', (data, callbackFn) => {
+  try {
+    const { displayName, room } = data;
+
+    if (!chatRooms[room]) {
+      chatRooms[room] = {
+        users: [displayName],
+        messages: [],
+      };
+    } else if (chatRooms[room].users.length < 2) {
+      chatRooms[room].users.push(displayName);
+    }
+
+    callbackFxn({ chats: chatRooms });
+  } catch (err) {
+    callbackFxn({
+      error: err,
+      errorMsg: 'There was a problem connecting chat.',
+    });
+  }
+});
+
+socket.on('disconnect', (data) => {
+  console.log('Disconnect Socket:', data);
+});
 
 /** Listen * */
 app.listen(PORT, () => {
