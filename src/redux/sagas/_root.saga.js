@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import dogregSaga from './dogregister.saga';
 import imgInfoSaga from './imageupload.saga';
 import dogSaga from './dog.saga';
+import oDogSaga from './otherdog.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     dogregSaga(),
     imgInfoSaga(),
     dogSaga(),
+    oDogSaga(),
   ]);
 }

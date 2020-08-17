@@ -5,6 +5,7 @@ import dog from './dogregister.reducer';
 import dogImage from './dogimage.reducer';
 import chatMessages from './chatMessages.reducer';
 import chatWith from './chatWith.reducer';
+import other from './otherdog.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   dogImage, //will add dog to user account
   chatMessages,
   chatWith,
+  other,
 });
 
 export default rootReducer;
