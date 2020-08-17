@@ -106,6 +106,6 @@ io.on('disconnect', (data) => {
 });
 
 /** Listen * */
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
