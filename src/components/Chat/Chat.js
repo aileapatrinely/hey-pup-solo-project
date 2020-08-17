@@ -40,7 +40,7 @@ class Chat extends Component {
   }
 
   changeMessage(event) {
-    this.s({
+    this.setState({
       typedMsg: event.target.value,
     });
   }

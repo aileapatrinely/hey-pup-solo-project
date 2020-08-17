@@ -19,7 +19,7 @@ const UploaderS3Router = require('react-dropzone-s3-uploader/s3router');
 const userRouter = require('./routes/user.router');
 const dogRouter = require('./routes/dog.router');
 const imageUrlRouter = require('./routes/imageurl.router');
-
+const otherdogs = require('./routes/otherdogs.router');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -46,6 +46,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/dog', dogRouter);
 app.use('/api/imageurl', imageUrlRouter);
+app.use('/api/fetch', otherdogs);
 
 // Serve static files
 app.use(express.static('build'));
@@ -54,7 +55,7 @@ app.use(express.static('build'));
 const PORT = process.env.PORT || 5000;
 
 //Socket.io Connection
-socket.on('JOIN_CHAT', (data, callbackFn) => {
+io.on('JOIN_CHAT', (data, callbackFn) => {
   try {
     const { displayName, room } = data;
 
@@ -76,7 +77,7 @@ socket.on('JOIN_CHAT', (data, callbackFn) => {
   }
 });
 
-socket.on('disconnect', (data) => {
+io.on('disconnect', (data) => {
   console.log('Disconnect Socket:', data);
 });
 
