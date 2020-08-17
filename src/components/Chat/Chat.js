@@ -47,7 +47,7 @@ class Chat extends Component {
   onSubmitChatter(event) {
     event.preventDefault();
     console.log('Send Message', socket);
-    socketemit(
+    socket.emit(
       'CHAT_MESSAGE',
       {
         room: `room_${this.props.store.user.id}`,
@@ -101,3 +101,5 @@ class Chat extends Component {
     );
   }
 }
+
+export default Chat;

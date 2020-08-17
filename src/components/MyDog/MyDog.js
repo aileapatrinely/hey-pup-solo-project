@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TextField, Button, Grid } from '@material-ui/core';
 import './MyDog.css';
+import { withRouter } from 'react-router-dom';
 
 class MyDog extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_DOG' });
   }
+
+  fetchDogs = (event) => {
+    this.props.history.push('/fetch');
+  };
 
   render() {
     console.log('dog', this.props.store.dog);
@@ -32,7 +37,12 @@ class MyDog extends Component {
           <Button className="btnlft" variant="contained" color="primary">
             Edit my Dog
           </Button>
-          <Button className="btnrt" variant="contained" color="primary">
+          <Button
+            onClick={this.fetchDogs}
+            className="btnrt"
+            variant="contained"
+            color="primary"
+          >
             Fetch Dogs!
           </Button>
         </div>
@@ -43,4 +53,4 @@ class MyDog extends Component {
 
 const mapStoreToProps = (store) => ({ store });
 
-export default connect(mapStoreToProps)(MyDog);
+export default connect(mapStoreToProps)(withRouter(MyDog));
