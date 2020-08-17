@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
   Switch,
+  withRouter,
 } from 'react-router-dom';
 
 import { connect } from 'react-redux';
@@ -21,6 +22,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
+import DogRegister from '../DogRegister/DogRegister';
 
 class App extends Component {
   componentDidMount() {
@@ -48,6 +50,7 @@ class App extends Component {
             <ProtectedRoute exact path="/info" component={InfoPage} />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will be redirected to the authRedirect path provided. */}
+
             <ProtectedRoute
               exact
               path="/login"
@@ -57,8 +60,13 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/registration"
-              authRedirect="/admin"
+              authRedirect="/dogregistration"
               component={RegisterPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/dogregistration"
+              component={DogRegister}
             />
             <ProtectedRoute
               exact

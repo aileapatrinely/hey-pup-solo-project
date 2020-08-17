@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DogRegister from '../DogRegister/DogRegister';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -8,11 +7,7 @@ import DogRegister from '../DogRegister/DogRegister';
 
 class InfoPage extends Component {
   render() {
-    return (
-      <div>
-        <DogRegister />
-      </div>
-    );
+    return <div>Idk yet!</div>;
   }
 }
 

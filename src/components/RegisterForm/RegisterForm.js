@@ -93,6 +93,7 @@ class RegisterForm extends Component {
             type="submit"
             name="submit"
             value="Register"
+            authRedirect="/dogregistration"
           />
         </div>
       </form>
