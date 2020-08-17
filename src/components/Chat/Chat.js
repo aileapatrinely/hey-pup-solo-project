@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { TextField, Button, Grid } from '@material-ui/core';
+import MessageList from './MessageList';
 
 let socket = {};
 class Chat extends Component {
@@ -96,6 +97,7 @@ class Chat extends Component {
 
     return (
       <div>
+        <MessageList />
         <form onSubmit={(event) => this.onSubmitChatter(event)}>
           <Grid container spacing={2} alignItems="center">
             <Grid item xs={8}>

@@ -8,6 +8,10 @@ class OtherDogs extends Component {
     this.props.dispatch({ type: 'FETCH_OTHER' });
   }
 
+  chatItup = (event) => {
+    this.props.history.push('/chat');
+  };
+
   backItUp = (event) => {
     // // for (i = 0; i < arrayLength; i--) {
     //   //gotta figure this out
@@ -33,11 +37,7 @@ class OtherDogs extends Component {
           </p>
           <h5>About {item.name}:</h5>
           <p>{item.description}</p>
-          <Button
-            onClick={this.props.history.push('/chat')}
-            variant="contained"
-            color="primary"
-          >
+          <Button onClick={this.chatItUp} variant="contained" color="primary">
             Chat
           </Button>
         </div>

@@ -6,6 +6,7 @@ import {
   ListItemIcon,
   Chip,
 } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 function MessageList(props) {
   const { user } = props;
