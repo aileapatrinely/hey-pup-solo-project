@@ -74,7 +74,6 @@ class App extends Component {
               exact
               path="/home"
               authRedirect="/admin"
-              authRedirect="/fetch"
               component={LandingPage}
             />
             <ProtectedRoute

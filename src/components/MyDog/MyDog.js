@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TextField, Button, Grid } from '@material-ui/core';
+import { TextField, Button, Grid, Box } from '@material-ui/core';
 import './MyDog.css';
 import { withRouter } from 'react-router-dom';
+import { shadows } from '@material-ui/system';
 
 class MyDog extends Component {
   componentDidMount() {
@@ -19,9 +20,9 @@ class MyDog extends Component {
       return (
         <div>
           <h2>{item.name}</h2>
-          <p align="center">
+          <Box boxShadow={3} align="center">
             <img src={item.picture} />
-          </p>
+          </Box>
           <p align="center" className="tinytxt">
             {item.size} • {item.energy_level} • {item.play_style}
           </p>

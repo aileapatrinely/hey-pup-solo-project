@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TextField, Button, Grid } from '@material-ui/core';
+import { TextField, Button, Grid, Box } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
+import { shadows } from '@material-ui/system';
 
 class OtherDogs extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_OTHER' });
   }
 
-  chatItup = (event) => {
+  chatItUp = (owner_id) => (event) => {
+    this.props.dispatch({ type: 'SET_CHAT_WITH', payload: owner_id });
     this.props.history.push('/chat');
   };
 
@@ -29,15 +31,19 @@ class OtherDogs extends Component {
       return (
         <div key={index}>
           <h2>{item.name}</h2>
-          <p align="center">
+          <Box boxShadow={3} align="center">
             <img src={item.picture} />
-          </p>
+          </Box>
           <p align="center" className="tinytxt">
             {item.size} • {item.energy_level} • {item.play_style}
           </p>
           <h5>About {item.name}:</h5>
           <p>{item.description}</p>
-          <Button onClick={this.chatItUp} variant="contained" color="primary">
+          <Button
+            onClick={this.chatItUp(item.owner_id)}
+            variant="contained"
+            color="primary"
+          >
             Chat
           </Button>
         </div>

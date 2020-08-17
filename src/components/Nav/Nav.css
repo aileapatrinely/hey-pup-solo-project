@@ -39,3 +39,9 @@
 img {
   max-width: 15%;
 }
+
+.logo {
+  max-width: 15%;
+  height: auto;
+  padding-left: 10px;
+}
