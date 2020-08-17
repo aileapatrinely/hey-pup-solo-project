@@ -13,6 +13,25 @@ class Chat extends Component {
 
   componentDidMount() {
     socket = io.connect('http://localhost:3000');
+  }
+  initWatchers() {
+    if (
+      !this.props.store.user.id ||
+      !this.props.store.chatWith.id ||
+      this.isChatty
+    ) {
+      return false;
+    }
+    this.isChatty = true;
+
+    const currentUser = this.props.store.user.id;
+    const chatWithUser = this.props.store.chatWith.id;
+    this.roomKey =
+      currentUser < chatWithUser
+        ? `room_${currentUser}_${chatWithUser}`
+        : `room_${chatWithUser}_${currentUser}`;
+    this.messageKey = `new_message_${this.roomKey}`;
+
     socket.emit(
       'JOIN_CHAT',
       {
@@ -24,13 +43,18 @@ class Chat extends Component {
       }
     );
 
-    socket.on(`new_message_room_${this.props.store.user.id}`, (data) => {
+    socket.on(this.messageKey, (data) => {
       const { messages } = data;
-      this.setState({
-        messages,
-      });
+      this.props.dispatch({ type: 'SET_CHAT_MESSAGES', payload: messages });
     });
   }
+
+  // socket.on(`new_message_room_${this.props.store.user.id}`, (data) => {
+  //   const { messages } = data;
+  //   this.setState({
+  //     messages,
+  //   });
+  // });
 
   componentWillUnmount() {
     if (socket.emit) {
@@ -47,7 +71,7 @@ class Chat extends Component {
   onSubmitChatter(event) {
     event.preventDefault();
     console.log('Send Message', socket);
-    socketemit(
+    socket.emit(
       'CHAT_MESSAGE',
       {
         room: `room_${this.props.store.user.id}`,
@@ -65,12 +89,13 @@ class Chat extends Component {
   }
 
   render() {
+    this.initWatchers();
+
     const disableChat = !this.props.store.chatWith;
     console.log('disableChat:', disableChat);
 
     return (
       <div>
-        <p>Gonna put things in here! Probably buttons, idk.</p>
         <form onSubmit={(event) => this.onSubmitChatter(event)}>
           <Grid container spacing={2} alignItems="center">
             <Grid item xs={8}>
@@ -101,3 +126,5 @@ class Chat extends Component {
     );
   }
 }
+
+export default Chat;

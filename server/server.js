@@ -20,6 +20,7 @@ const userRouter = require('./routes/user.router');
 const dogRouter = require('./routes/dog.router');
 const imageUrlRouter = require('./routes/imageurl.router');
 const otherdogs = require('./routes/otherdogs.router');
+const { Socket } = require('dgram');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -55,7 +56,30 @@ app.use(express.static('build'));
 const PORT = process.env.PORT || 5000;
 
 //Socket.io Connection
-io.on('JOIN_CHAT', (data, callbackFn) => {
+io.on('CHAT_MESSAGE', (data, callbackFxn) => {
+  try {
+    const { message, displayName, room } = data;
+    console.log('CHAT_MESSAGE', chatRooms);
+    if (!chatRooms[room]) {
+      throw 'Now active.';
+    }
+
+    chatRooms[room].message.push({
+      displayName,
+      message,
+    });
+    callbackFxn({ chats: chatRooms });
+    io.emit(`new_message_${room}`, chatRooms[room]);
+  } catch (err) {
+    callbackFxn({
+      error: err,
+      errorMsg: 'There was a problem sending your message.',
+    });
+  }
+  console.log('Socket Message:', data);
+});
+
+io.on('JOIN_CHAT', (data, callbackFxn) => {
   try {
     const { displayName, room } = data;
 
