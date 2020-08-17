@@ -8,7 +8,8 @@ import {
 } from '@material-ui/core';
 
 function MessageList(props) {
-  const { messages, user } = props;
+  const { user } = props;
+  const messages = useSelector((store) => store.chatMessages);
   return (
     <List component="ul" aria-label="messages">
       {messages.length > 0 ? (
