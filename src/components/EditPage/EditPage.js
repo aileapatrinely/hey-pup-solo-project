@@ -62,7 +62,7 @@ class EditPage extends Component {
   render() {
     return (
       <div>
-        <form className="formPanel" onSubmit={this.onSaveClick}>
+        <form className="formPanel">
           <h1>Editing {this.props.store.dog.name}</h1>
           <div>
             <label htmlFor="name">
@@ -144,7 +144,9 @@ class EditPage extends Component {
           <button onClick={this.onCancelClick} style={{ marginRight: '20px' }}>
             Cancel
           </button>
-          <button onClick={this.onSaveClick}>Save</button>
+          <button onSubmit={this.onSaveClick} onClick={this.onSaveClick}>
+            Save
+          </button>
         </div>
       </div>
     );

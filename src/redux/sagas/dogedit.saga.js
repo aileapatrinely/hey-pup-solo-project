@@ -8,7 +8,7 @@ function* editDog(action) {
       `/api/edit/${action.payload.id}`,
       action.payload
     );
-    yield put({ type: 'UPDATE_DOG', payload: action.payload.id });
+    yield put({ type: 'FETCH_DOG', payload: action.payload.id });
   } catch (error) {
     console.log('Dog get request failed', error);
   }
