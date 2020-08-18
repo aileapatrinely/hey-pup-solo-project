@@ -8,6 +8,7 @@ import { shadows } from '@material-ui/system';
 class MyDog extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_DOG' });
+    this.props.dispatch({ type: 'FETCH_OTHER' });
   }
 
   fetchDogs = (event) => {
@@ -15,6 +16,9 @@ class MyDog extends Component {
   };
 
   render() {
+    // const otherDog = this.props.store.other.map((item) => {
+    //   return item.id;
+    // });
     console.log('dog', this.props.store.dog);
     const myDog = this.props.store.dog.map((item, index) => {
       return (

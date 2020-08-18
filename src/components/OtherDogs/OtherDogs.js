@@ -4,6 +4,9 @@ import { TextField, Button, Grid, Box } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 
 class OtherDogs extends Component {
+  state = {
+    i: 0,
+  };
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_OTHER' });
   }
@@ -14,14 +17,16 @@ class OtherDogs extends Component {
   };
 
   backItUp = (event) => {
-    // // for (i = 0; i < arrayLength; i--) {
-    //   //gotta figure this out
-    // }
+    if (this.state.i > 0)
+      this.setState({
+        ...this.state.i--,
+      });
   };
 
   nextDog = (event) => {
-    // for (i = 0; i < arrayLength; i++) {
-    // }
+    this.setState({
+      ...this.state.i++,
+    });
   };
 
   render() {
@@ -47,9 +52,10 @@ class OtherDogs extends Component {
         </div>
       );
     });
+
     return (
       <Grid className="gettinggriddy">
-        <div>{otherDog}</div>
+        <div>{otherDog[this.state.i]}</div>
         <div>
           <Button
             onClick={this.backItUp}
