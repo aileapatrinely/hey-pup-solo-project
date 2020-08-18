@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TextField, Button, Grid, Box } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
+import './OtherDogs.css';
 
 class OtherDogs extends Component {
   state = {
@@ -60,14 +61,15 @@ class OtherDogs extends Component {
               Next
             </Button>
           </div>
-          <Button
-            className="btncenter"
-            onClick={this.chatItUp(item.owner_id)}
-            variant="contained"
-            color="primary"
-          >
-            Chat
-          </Button>
+          <div className="btncenter">
+            <Button
+              onClick={this.chatItUp(item.owner_id)}
+              variant="contained"
+              color="primary"
+            >
+              Chat
+            </Button>
+          </div>
         </div>
       );
     });

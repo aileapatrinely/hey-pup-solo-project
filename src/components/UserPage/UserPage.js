@@ -12,7 +12,6 @@ const UserPage = (props) => (
     <h1 id="welcome">Welcome, {props.store.user.username}!</h1>
     <MyDog />
     <p>Your ID is: {props.store.user.id}</p>
-    <LogOutButton className="log-in" />
   </div>
 );
 

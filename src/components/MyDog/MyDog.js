@@ -15,6 +15,10 @@ class MyDog extends Component {
     this.props.history.push(`/fetch`);
   };
 
+  editDog = (event) => {
+    this.props.history.push(`/edit/${this.props.store.dog.id}`);
+  };
+
   render() {
     // const otherDog = this.props.store.other.map((item) => {
     //   return item.id;
@@ -40,7 +44,12 @@ class MyDog extends Component {
       <Grid className="gettinggriddy">
         <div>{myDog}</div>
         <div>
-          <Button className="btnlft" variant="contained" color="primary">
+          <Button
+            onClick={this.editDog}
+            className="btnlft"
+            variant="contained"
+            color="primary"
+          >
             Edit my Dog
           </Button>
           <Button
