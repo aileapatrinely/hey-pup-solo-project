@@ -17,8 +17,6 @@ class EditPage extends Component {
     play_style: '',
     description: '',
     owner_id: '',
-    picture: '',
-    id: '',
   };
 
   componentDidMount() {
@@ -44,7 +42,7 @@ class EditPage extends Component {
       description: this.state.description,
       owner_id: this.props.user.id,
       picture: this.props.store.dogImage,
-      id: this.props.store.dog.id,
+      id: this.props.match.params.id,
     };
     this.props.dispatch({
       type: 'UPDATE_DOG',
@@ -84,9 +82,9 @@ class EditPage extends Component {
                 onChange={this.onInputChange('energy_level')}
                 defaultValue={this.props.store.dog.energy_level}
               >
-                <option value={'low'}>Low</option>
-                <option value={'medium'}>Medium</option>
-                <option value={'high'}>High</option>
+                <option value={this.state.energy_level.low}>Low</option>
+                <option value={this.state.energy_level.medium}>Medium</option>
+                <option value={this.state.energy_level.high}>High</option>
               </select>
             </label>
           </div>
@@ -98,11 +96,11 @@ class EditPage extends Component {
                 defaultValue={this.props.store.dog.size}
                 onChange={this.onInputChange('size')}
               >
-                <option value={'xsmall'}>X-Small</option>
-                <option value={'small'}>Small</option>
-                <option value={'medium'}>Medium</option>
-                <option value={'large'}>Large</option>
-                <option value={'xlarge'}>X-Large</option>
+                <option value={this.state.size.xsmall}>X-Small</option>
+                <option value={this.state.size.small}>Small</option>
+                <option value={this.state.size.medium}>Medium</option>
+                <option value={this.state.size.large}>Large</option>
+                <option value={this.state.size.xlarge}>X-Large</option>
               </select>
             </label>
           </div>
@@ -114,10 +112,16 @@ class EditPage extends Component {
                 defaultValue={this.props.store.dog.play_style}
                 onChange={this.onInputChange('play_style')}
               >
-                <option value={'justlikescompany'}>Just likes company</option>
-                <option value={'lovestug'}>Loves Tug</option>
-                <option value={'playschase'}>Plays Chase</option>
-                <option value={'bodyslamsandwrestling'}>
+                <option value={this.state.play_style.justlikescompany}>
+                  Just likes company
+                </option>
+                <option value={this.state.play_style.lovestug}>
+                  Loves Tug
+                </option>
+                <option value={this.state.play_style.playschase}>
+                  Plays Chase
+                </option>
+                <option value={this.state.play_style.bodyslamsandwrestling}>
                   Body slams and Wrestling
                 </option>
                 <option value={'other'}>Other</option>
