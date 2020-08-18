@@ -42,7 +42,26 @@ class OtherDogs extends Component {
           </p>
           <h5>About {item.name}:</h5>
           <p>{item.description}</p>
+          <div>
+            <Button
+              onClick={this.backItUp}
+              className="btnlft"
+              variant="contained"
+              color="primary"
+            >
+              Back
+            </Button>
+            <Button
+              onClick={this.nextDog}
+              className="btnrt"
+              variant="contained"
+              color="primary"
+            >
+              Next
+            </Button>
+          </div>
           <Button
+            className="btncenter"
             onClick={this.chatItUp(item.owner_id)}
             variant="contained"
             color="primary"
@@ -56,24 +75,6 @@ class OtherDogs extends Component {
     return (
       <Grid className="gettinggriddy">
         <div>{otherDog[this.state.i]}</div>
-        <div>
-          <Button
-            onClick={this.backItUp}
-            className="btnlft"
-            variant="contained"
-            color="primary"
-          >
-            Back
-          </Button>
-          <Button
-            onClick={this.nextDog}
-            className="btnrt"
-            variant="contained"
-            color="primary"
-          >
-            Next
-          </Button>
-        </div>
       </Grid>
     );
   }

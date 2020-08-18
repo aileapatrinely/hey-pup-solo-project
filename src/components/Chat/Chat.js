@@ -11,33 +11,36 @@ class Chat extends Component {
     typedMsg: '',
     messages: [],
   };
-
   componentDidMount() {
-    socket = io.connect('http://localhost:3000');
+    console.log('in DidMount');
   }
+
   initWatchers() {
+    console.log(this.props.store.user.id, this.props.store.chatWith);
     if (
       !this.props.store.user.id ||
-      !this.props.store.chatWith.id ||
+      !this.props.store.chatWith ||
       this.isChatty
     ) {
       return false;
     }
+    socket = io.connect('http://localhost:3000');
+
     this.isChatty = true;
 
     const currentUser = this.props.store.user.id;
-    const chatWithUser = this.props.store.chatWith.id;
+    const chatWithUser = this.props.store.chatWith;
     this.roomKey =
       currentUser < chatWithUser
         ? `room_${currentUser}_${chatWithUser}`
         : `room_${chatWithUser}_${currentUser}`;
     this.messageKey = `new_message_${this.roomKey}`;
-
+    console.log('message key:', this.messageKey);
     socket.emit(
       'JOIN_CHAT',
       {
-        displayName: this.props.store.username,
-        room: `room_${this.props.store.user.id}`,
+        displayName: this.props.store.user.username,
+        room: this.roomKey,
       },
       (joinData) => {
         console.log('Joined chat:', joinData);
@@ -75,7 +78,7 @@ class Chat extends Component {
     socket.emit(
       'CHAT_MESSAGE',
       {
-        room: `room_${this.props.store.user.id}`,
+        room: this.roomKey,
         displayName: this.props.store.user.username,
         message: this.state.typedMsg,
       },

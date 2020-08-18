@@ -55,55 +55,61 @@ app.use(express.static('build'));
 // App Set //
 const PORT = process.env.PORT || 5000;
 
+const chatRooms = {};
+
+io.on('connection', (socket) => {
+  socket.on('CHAT_MESSAGE', (data, callbackFxn) => {
+    try {
+      const { message, displayName, room } = data;
+      console.log(data);
+      console.log('CHAT_MESSAGE', chatRooms);
+      if (!chatRooms[room]) {
+        throw 'Now active.';
+      }
+
+      chatRooms[room].message.push({
+        displayName,
+        message,
+      });
+      callbackFxn({ chats: chatRooms });
+      socket.emit(`new_message_${room}`, chatRooms[room]);
+    } catch (err) {
+      console.log(err);
+      callbackFxn({
+        error: err,
+        errorMsg: 'There was a problem sending your message.',
+      });
+    }
+    console.log('Socket Message:', data);
+  });
+
+  socket.on('JOIN_CHAT', (data, callbackFxn) => {
+    try {
+      const { displayName, room } = data;
+
+      if (!chatRooms[room]) {
+        chatRooms[room] = {
+          users: [displayName],
+          messages: [],
+        };
+      } else if (chatRooms[room].users.length < 2) {
+        chatRooms[room].users.push(displayName);
+      }
+
+      callbackFxn({ chats: chatRooms });
+    } catch (err) {
+      callbackFxn({
+        error: err,
+        errorMsg: 'There was a problem connecting chat.',
+      });
+    }
+  });
+
+  socket.on('disconnect', (data) => {
+    console.log('Disconnect Socket:', data);
+  });
+});
 //Socket.io Connection
-io.on('CHAT_MESSAGE', (data, callbackFxn) => {
-  try {
-    const { message, displayName, room } = data;
-    console.log('CHAT_MESSAGE', chatRooms);
-    if (!chatRooms[room]) {
-      throw 'Now active.';
-    }
-
-    chatRooms[room].message.push({
-      displayName,
-      message,
-    });
-    callbackFxn({ chats: chatRooms });
-    io.emit(`new_message_${room}`, chatRooms[room]);
-  } catch (err) {
-    callbackFxn({
-      error: err,
-      errorMsg: 'There was a problem sending your message.',
-    });
-  }
-  console.log('Socket Message:', data);
-});
-
-io.on('JOIN_CHAT', (data, callbackFxn) => {
-  try {
-    const { displayName, room } = data;
-
-    if (!chatRooms[room]) {
-      chatRooms[room] = {
-        users: [displayName],
-        messages: [],
-      };
-    } else if (chatRooms[room].users.length < 2) {
-      chatRooms[room].users.push(displayName);
-    }
-
-    callbackFxn({ chats: chatRooms });
-  } catch (err) {
-    callbackFxn({
-      error: err,
-      errorMsg: 'There was a problem connecting chat.',
-    });
-  }
-});
-
-io.on('disconnect', (data) => {
-  console.log('Disconnect Socket:', data);
-});
 
 /** Listen * */
 httpServer.listen(PORT, () => {

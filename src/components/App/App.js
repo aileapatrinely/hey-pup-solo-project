@@ -24,7 +24,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import './App.css';
 import DogRegister from '../DogRegister/DogRegister';
 import OtherDogs from '../OtherDogs/OtherDogs';
-import Chat from '../Chat/Chat';
+import ChatPage from '../ChatPage/ChatPage';
 
 class App extends Component {
   componentDidMount() {
@@ -82,7 +82,7 @@ class App extends Component {
               // authRedirect="/admin"
               component={OtherDogs}
             />
-            {/* <ProtectedRoute exactpath="/chat" component={Chat} /> */}
+            <ProtectedRoute exactpath="/chat" component={ChatPage} />
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
