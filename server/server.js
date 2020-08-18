@@ -67,7 +67,7 @@ io.on('connection', (socket) => {
         throw 'Now active.';
       }
 
-      chatRooms[room].message.push({
+      chatRooms[room].messages.push({
         displayName,
         message,
       });

@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 function MessageList(props) {
   const { user } = props;
@@ -21,7 +22,7 @@ function MessageList(props) {
             <ListItem key={index}>
               {item.displayName === user.username ? (
                 <>
-                  <ListItemText primary={item.messages} />
+                  <ListItemText primary={item.message} />
                   <ListItemIcon>
                     <Chip label={item.displayName} color="primary" />
                   </ListItemIcon>
@@ -46,4 +47,4 @@ function MessageList(props) {
   );
 }
 
-export default connect()(MessageList);
+export default connect(mapStoreToProps)(MessageList);
