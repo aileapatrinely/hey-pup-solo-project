@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TextField, Button, Grid, Box } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
-import { shadows } from '@material-ui/system';
 
 class OtherDogs extends Component {
   componentDidMount() {
@@ -22,7 +21,6 @@ class OtherDogs extends Component {
 
   nextDog = (event) => {
     // for (i = 0; i < arrayLength; i++) {
-    //   //figure this out
     // }
   };
 

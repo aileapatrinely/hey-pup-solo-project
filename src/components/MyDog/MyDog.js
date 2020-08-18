@@ -11,7 +11,7 @@ class MyDog extends Component {
   }
 
   fetchDogs = (event) => {
-    this.props.history.push('/fetch');
+    this.props.history.push(`/fetch`);
   };
 
   render() {
@@ -31,6 +31,7 @@ class MyDog extends Component {
         </div>
       );
     });
+
     return (
       <Grid className="gettinggriddy">
         <div>{myDog}</div>

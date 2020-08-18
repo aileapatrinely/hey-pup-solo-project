@@ -7,10 +7,12 @@ import {
   Chip,
 } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
 function MessageList(props) {
   const { user } = props;
   const messages = useSelector((store) => store.chatMessages);
+
   return (
     <List component="ul" aria-label="messages">
       {messages.length > 0 ? (
@@ -44,4 +46,4 @@ function MessageList(props) {
   );
 }
 
-export default MessageList;
+export default connect()(MessageList);
