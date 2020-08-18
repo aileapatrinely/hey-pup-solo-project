@@ -15,7 +15,7 @@ router.put('/:id', (req, res) => {
   const id = req.body.id;
 
   const queryText =
-    'UPDATE "dog" SET "name"=$1, "energy_level"=$2, "size"=$3, "play_style"=$4, "description"=$5, "picture"=$6 WHERE "id"=$7;';
+    'UPDATE dog SET name=$1, energy_level=$2, size=$3, play_style=$4, description=$5, picture=$6 WHERE id=$7;';
   pool
     .query(queryText, [
       name,

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ImageUploader from '../ImageUploader/ImageUploader';
+import { withRouter } from 'react-router-dom';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -10,20 +11,21 @@ import ImageUploader from '../ImageUploader/ImageUploader';
 
 class EditPage extends Component {
   state = {
-    name: this.props.store.dog.name,
-    energy_level: this.props.store.dog.energy_level,
-    size: this.props.store.dog.size,
-    play_style: this.props.store.dog.play_style,
-    description: this.props.store.dog.description,
-    owner_id: this.props.store.dog.owner_id,
-    picture: this.props.store.dog.picture,
-    id: this.props.store.dog.id,
+    name: '',
+    energy_level: '',
+    size: '',
+    play_style: '',
+    description: '',
+    owner_id: '',
+    picture: '',
+    id: '',
   };
 
   componentDidMount() {
     if (!this.props.store.dog.name) {
       this.props.dispatch({
         type: 'FETCH_DOG',
+        payload: this.props.match.params.id,
       });
     }
   }
@@ -42,7 +44,7 @@ class EditPage extends Component {
       description: this.state.description,
       owner_id: this.props.user.id,
       picture: this.props.store.dogImage,
-      id: this.state.id,
+      id: this.props.store.dog.id,
     };
     this.props.dispatch({
       type: 'UPDATE_DOG',
@@ -66,6 +68,7 @@ class EditPage extends Component {
             <label htmlFor="name">
               Name:
               <input
+                defaultValue={this.props.store.dog.name}
                 type="text"
                 name="name"
                 value={this.state.name}
@@ -79,6 +82,7 @@ class EditPage extends Component {
               <select
                 name="energy_level"
                 onChange={this.onInputChange('energy_level')}
+                defaultValue={this.props.store.dog.energy_level}
               >
                 <option value={'low'}>Low</option>
                 <option value={'medium'}>Medium</option>
@@ -89,7 +93,11 @@ class EditPage extends Component {
           <div>
             <label htmlFor="size">
               Size:
-              <select name="size" onChange={this.onInputChange('size')}>
+              <select
+                name="size"
+                defaultValue={this.props.store.dog.size}
+                onChange={this.onInputChange('size')}
+              >
                 <option value={'xsmall'}>X-Small</option>
                 <option value={'small'}>Small</option>
                 <option value={'medium'}>Medium</option>
@@ -103,6 +111,7 @@ class EditPage extends Component {
               Play-style:
               <select
                 name="play_style"
+                defaultValue={this.props.store.dog.play_style}
                 onChange={this.onInputChange('play_style')}
               >
                 <option value={'justlikescompany'}>Just likes company</option>
@@ -120,6 +129,7 @@ class EditPage extends Component {
               Description:
               <input
                 type="text"
+                defaultValue={this.props.store.dog.description}
                 name="description"
                 value={this.state.description}
                 onChange={this.onInputChange('description')}
@@ -128,9 +138,6 @@ class EditPage extends Component {
           </div>
           <div>
             <ImageUploader />
-          </div>
-          <div>
-            <input type="submit" name="Save" />
           </div>
         </form>
         <div>
@@ -144,4 +151,4 @@ class EditPage extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(EditPage);
+export default connect(mapStoreToProps)(withRouter(EditPage));
