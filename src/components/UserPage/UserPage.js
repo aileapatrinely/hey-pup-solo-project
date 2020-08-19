@@ -26,7 +26,7 @@ class UserPage extends Component {
         <MyDog />
         <div>
           <p>Your ID is: {this.props.store.user.id}</p>
-          <Button onClick={this.onClickDelete}>Delete Account</Button>
+          <Button onClick={this.onClickDelete}>weetalert Account</Button>
         </div>
       </div>
     );
