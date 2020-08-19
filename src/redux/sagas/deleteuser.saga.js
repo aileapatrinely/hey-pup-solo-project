@@ -10,7 +10,7 @@ function* deleteUser(action) {
     );
     yield put({ type: 'FETCH_DOG', payload: action.payload.id });
   } catch (error) {
-    console.log('Delet user failed', error);
+    console.log('Delete user failed', error);
   }
 }
 
