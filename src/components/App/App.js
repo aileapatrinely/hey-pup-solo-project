@@ -49,7 +49,7 @@ class App extends Component {
             <ProtectedRoute exact path="/admin" component={UserPage} />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-            <ProtectedRoute exact path="/edit/:id" component={Edit} />
+            <ProtectedRoute exact path="/edit" component={Edit} />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will be redirected to the authRedirect path provided. */}
 
@@ -62,7 +62,6 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/registration"
-              authRedirect="/dogregistration"
               component={RegisterPage}
             />
             <ProtectedRoute

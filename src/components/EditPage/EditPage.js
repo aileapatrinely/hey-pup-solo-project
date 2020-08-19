@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ImageUploader from '../ImageUploader/ImageUploader';
 import { withRouter } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -17,6 +18,7 @@ class EditPage extends Component {
     play_style: '',
     description: '',
     owner_id: '',
+    picture: '',
   };
 
   componentDidMount() {
@@ -41,14 +43,24 @@ class EditPage extends Component {
       play_style: this.state.play_style,
       description: this.state.description,
       owner_id: this.props.user.id,
-      picture: this.props.store.dogImage,
-      id: this.props.match.params.id,
     };
     this.props.dispatch({
       type: 'UPDATE_DOG',
       payload: dataForServer,
     });
     this.props.history.push(`/admin`);
+  };
+
+  onSavePic = (event) => {
+    event.preventDefault();
+    const picData = {
+      picture: this.props.store.dogImage,
+      owner_id: this.props.user.id,
+    };
+    this.props.dispatch({
+      type: 'UPDATE_PIC',
+      payload: picData,
+    });
   };
 
   onInputChange = (input) => (event) => {
@@ -142,6 +154,7 @@ class EditPage extends Component {
           </div>
           <div>
             <ImageUploader />
+            <Button onClick={this.onSavePic}>Save Pic</Button>
           </div>
         </form>
         <div>

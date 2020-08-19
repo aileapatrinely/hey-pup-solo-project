@@ -7,7 +7,8 @@ import imgInfoSaga from './imageupload.saga';
 import dogSaga from './dog.saga';
 import oDogSaga from './otherdog.saga';
 import dogeditSaga from './dogedit.saga';
-
+import piceditSaga from './picedit.saga';
+import deleteUser from './deleteuser.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -25,5 +26,7 @@ export default function* rootSaga() {
     dogSaga(),
     oDogSaga(),
     dogeditSaga(),
+    piceditSaga(),
+    deleteUser(),
   ]);
 }

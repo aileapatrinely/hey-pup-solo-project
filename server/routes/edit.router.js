@@ -11,11 +11,10 @@ router.put('/:id', (req, res) => {
   const size = req.body.size;
   const play_style = req.body.play_style;
   const description = req.body.description;
-  const picture = req.body.picture;
-  const id = req.body.id;
+  const owner_id = req.body.owner_id;
 
   const queryText =
-    'UPDATE "dog" SET "name"=$1, "energy_level"=$2, "size"=$3, "play_style"=$4, "description"=$5, "picture"=$6 WHERE "id"=$7;';
+    'UPDATE "dog" SET "name"=$1, "energy_level"=$2, "size"=$3, "play_style"=$4, "description"=$5 WHERE "owner_id"=$6;';
   pool
     .query(queryText, [
       name,
@@ -23,8 +22,7 @@ router.put('/:id', (req, res) => {
       size,
       play_style,
       description,
-      picture,
-      id,
+      owner_id,
     ])
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(500));
