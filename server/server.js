@@ -90,6 +90,7 @@ io.on('connection', (socket) => {
   socket.on('JOIN_CHAT', (data, callbackFxn) => {
     try {
       const { displayName, room } = data;
+      socket.join(room);
 
       if (!chatRooms[room]) {
         chatRooms[room] = {

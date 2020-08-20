@@ -69,6 +69,7 @@ class DogRegister extends Component {
               name="energy_level"
               onChange={this.handleInputChangeFor('energy_level')}
             >
+              <option>Choose one</option>
               <option value={this.state.energy_level.low}>Low</option>
               <option value={this.state.energy_level.medium}>Medium</option>
               <option value={this.state.energy_level.high}>High</option>
@@ -83,6 +84,7 @@ class DogRegister extends Component {
               required
               onChange={this.handleInputChangeFor('size')}
             >
+              <option>Choose one</option>
               <option value={this.state.size.xsmall}>X-Small</option>
               <option value={this.state.size.small}>Small</option>
               <option value={this.state.size.medium}>Medium</option>
@@ -98,6 +100,7 @@ class DogRegister extends Component {
               name="play_style"
               onChange={this.handleInputChangeFor('play_style')}
             >
+              <option>Choose one</option>
               <option value={this.state.play_style.justlikescompany}>
                 Just likes company
               </option>

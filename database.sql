@@ -19,5 +19,5 @@ CREATE TABLE "dog" (
 	"play_style" VARCHAR (200) NOT NULL,
 	"picture" VARCHAR (120),
 	"description" TEXT,
-	"owner_id" INT REFERENCES "user"
+	"owner_id" INT REFERENCES "user" ON DELETE CASCADE
 	);

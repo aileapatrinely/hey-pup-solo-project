@@ -94,6 +94,7 @@ class EditPage extends Component {
                 onChange={this.onInputChange('energy_level')}
                 defaultValue={this.props.store.dog.energy_level}
               >
+                <option>Choose one</option>
                 <option value={this.state.energy_level.low}>Low</option>
                 <option value={this.state.energy_level.medium}>Medium</option>
                 <option value={this.state.energy_level.high}>High</option>
@@ -108,6 +109,7 @@ class EditPage extends Component {
                 defaultValue={this.props.store.dog.size}
                 onChange={this.onInputChange('size')}
               >
+                <option>Choose one</option>
                 <option value={this.state.size.xsmall}>X-Small</option>
                 <option value={this.state.size.small}>Small</option>
                 <option value={this.state.size.medium}>Medium</option>
@@ -124,6 +126,7 @@ class EditPage extends Component {
                 defaultValue={this.props.store.dog.play_style}
                 onChange={this.onInputChange('play_style')}
               >
+                <option>Choose one</option>
                 <option value={this.state.play_style.justlikescompany}>
                   Just likes company
                 </option>
