@@ -5,10 +5,10 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* deleteUser(action) {
   try {
     const response = yield axios.delete(
-      `/api/delete/${action.payload.id}`,
-      action.payload
+      `/api/user/${action.payload.id}`,
+      action.payload.id
     );
-    yield put({ type: 'FETCH_DOG', payload: action.payload.id });
+    console.log('action.payload:', action.payload);
   } catch (error) {
     console.log('Delete user failed', error);
   }

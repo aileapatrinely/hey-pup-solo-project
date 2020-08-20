@@ -46,4 +46,17 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  console.log('What is this? ', id);
+  const queryText = `DELETE FROM "user" WHERE "user".id=$1`;
+  pool
+    .query(queryText, [id])
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

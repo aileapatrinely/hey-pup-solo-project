@@ -31,10 +31,11 @@ class UserPage extends Component {
   };
 
   deleteAccount = () => {
-    const deleteData = this.props.store.user.id;
     this.props.dispatch({
       type: 'DELETE_USER',
-      payload: deleteData,
+      payload: {
+        id: this.props.store.user.id,
+      },
     });
   };
 
