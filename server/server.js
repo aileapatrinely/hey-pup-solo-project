@@ -22,7 +22,6 @@ const imageUrlRouter = require('./routes/imageurl.router');
 const otherdogs = require('./routes/otherdogs.router');
 const editDog = require('./routes/edit.router');
 const editPic = require('./routes/picedit.router');
-const deleteUser = require('./routes/deleteuser.router');
 const { Socket } = require('dgram');
 // Body parser middleware
 app.use(bodyParser.json());
@@ -53,7 +52,6 @@ app.use('/api/imageurl', imageUrlRouter);
 app.use('/api/fetch', otherdogs);
 app.use('/api/edit', editDog);
 app.use('/api/picture', editPic);
-app.use('/api/delete', deleteUser);
 // Serve static files
 app.use(express.static('build'));
 

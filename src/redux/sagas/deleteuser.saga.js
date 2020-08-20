@@ -8,7 +8,6 @@ function* deleteUser(action) {
       `/api/user/${action.payload.id}`,
       action.payload.id
     );
-    console.log('action.payload:', action.payload);
   } catch (error) {
     console.log('Delete user failed', error);
   }

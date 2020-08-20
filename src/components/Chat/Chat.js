@@ -11,9 +11,6 @@ class Chat extends Component {
     typedMsg: '',
     messages: [],
   };
-  componentDidMount() {
-    console.log('in DidMount');
-  }
 
   initWatchers() {
     console.log(this.props.store.user.id, this.props.store.chatWith);

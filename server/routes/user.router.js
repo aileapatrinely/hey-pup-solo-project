@@ -48,7 +48,6 @@ router.post('/logout', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
-  console.log('What is this? ', id);
   const queryText = `DELETE FROM "user" WHERE "user".id=$1`;
   pool
     .query(queryText, [id])
