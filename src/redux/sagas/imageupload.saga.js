@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* postImgUrl(action) {
@@ -11,7 +11,7 @@ function* postImgUrl(action) {
     const data = {
       imageUrl: action.payload,
     };
-    const response = yield axios.post('/api/imageurl', data, config);
+    yield axios.post('/api/imageurl', data, config);
   } catch (error) {
     console.log('Image URL post failed:', error);
   }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import MyDog from '../MyDog/MyDog';
 import { Button } from '@material-ui/core';
@@ -37,6 +36,7 @@ class UserPage extends Component {
         id: this.props.store.user.id,
       },
     });
+    this.props.history.push('/registration');
   };
 
   render() {

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ImageUploader from '../ImageUploader/ImageUploader';
-import InfoPage from '../InfoPage/InfoPage';
-import { Link } from 'react-router-dom';
 
 class DogRegister extends Component {
   state = {
@@ -31,6 +29,10 @@ class DogRegister extends Component {
         picture: this.props.store.dogImage,
       },
     });
+    this.props.dispatch({
+      type: 'FETCH_DOG',
+    });
+    this.props.history.push('/admin');
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -130,9 +132,6 @@ class DogRegister extends Component {
             type="submit"
             name="submit"
             value="Register"
-            onClick={() => {
-              this.props.history.push('/admin');
-            }}
           />
         </div>
       </form>

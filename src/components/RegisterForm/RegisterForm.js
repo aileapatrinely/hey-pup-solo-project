@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { withRouter } from 'react-router-dom';
 
 class RegisterForm extends Component {
   state = {
@@ -22,6 +23,7 @@ class RegisterForm extends Component {
         location: this.state.location,
       },
     });
+    this.props.history.push('/dogregistration');
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -93,7 +95,6 @@ class RegisterForm extends Component {
             type="submit"
             name="submit"
             value="Register"
-            authRedirect="/dogregistration"
           />
         </div>
       </form>
@@ -101,4 +102,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(RegisterForm);
+export default connect(mapStoreToProps)(withRouter(RegisterForm));
