@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ImageUploader from '../ImageUploader/ImageUploader';
 import { withRouter } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
+import './EditPage.css';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -161,12 +162,26 @@ class EditPage extends Component {
           </div>
         </form>
         <div>
-          <button onClick={this.onCancelClick} style={{ marginRight: '20px' }}>
-            Cancel
-          </button>
-          <button onSubmit={this.onSaveClick} onClick={this.onSaveClick}>
-            Save
-          </button>
+          <Grid container>
+            <Grid item xs={4}>
+              <button
+                className="btn btn_sizeFull btnlft"
+                onClick={this.onCancelClick}
+              >
+                Cancel
+              </button>
+            </Grid>
+            <Grid item xs={3}></Grid>
+            <Grid item xs={4}>
+              <button
+                className="btn btn_sizeFull btnrt"
+                onSubmit={this.onSaveClick}
+                onClick={this.onSaveClick}
+              >
+                Save
+              </button>
+            </Grid>
+          </Grid>
         </div>
       </div>
     );

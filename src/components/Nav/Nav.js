@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { Grid } from '@material-ui/core';
 
 const Nav = (props) => {
   let loginLinkData = {
@@ -19,13 +20,19 @@ const Nav = (props) => {
   return (
     <div className="nav">
       <Link to="/home">
-        <img
-          className="logo"
-          id="logo"
-          src="/Hey-pup.png"
-          alt="cute puppy cartoon"
-        />
-        <h2 className="nav-title">Hey, Pup!</h2>
+        <Grid container align="center">
+          <Grid item>
+            <img
+              className="logo"
+              id="logo"
+              src="/Hey-pup.png"
+              alt="cute puppy cartoon"
+            />
+          </Grid>
+          <Grid item>
+            <h2 className="nav-title">Hey, Pup!</h2>
+          </Grid>
+        </Grid>
       </Link>
       <div className="nav-right">
         <Link className="nav-link" to={loginLinkData.path}>

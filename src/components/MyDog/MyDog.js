@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Grid, Box } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 import './MyDog.css';
 import { withRouter } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ class MyDog extends Component {
   };
 
   editDog = (event) => {
-    this.props.history.push(`/edit/${this.props.store.dog.id}`);
+    this.props.history.push(`/edit`);
   };
 
   render() {
@@ -33,8 +33,8 @@ class MyDog extends Component {
           <p align="center" className="tinytxt">
             {item.size} • {item.energy_level} • {item.play_style}
           </p>
-          <h5>About {item.name}:</h5>
-          <p>{item.description}</p>
+          <h5 className="aboutheader">About {item.name}:</h5>
+          <p className="dogdescription">{item.description}</p>
         </div>
       );
     });
@@ -42,24 +42,16 @@ class MyDog extends Component {
     return (
       <Grid className="gettinggriddy">
         <div>{myDog}</div>
-        <div>
-          <Button
-            onClick={this.editDog}
-            className="btnlft"
-            variant="contained"
-            color="primary"
-          >
-            Edit my Dog
-          </Button>
-          <Button
-            onClick={this.fetchDogs}
-            className="btnrt"
-            variant="contained"
-            color="primary"
-          >
+        <Grid xs={12} className="gridlft">
+          <button onClick={this.editDog} className="btn btn_sizeSm btnlft">
+            Edit Dog
+          </button>
+        </Grid>
+        <Grid xs={12} className="gridrt">
+          <button onClick={this.fetchDogs} className="btn btn_sizeSm btnrt">
             Fetch Dogs!
-          </Button>
-        </div>
+          </button>
+        </Grid>
       </Grid>
     );
   }

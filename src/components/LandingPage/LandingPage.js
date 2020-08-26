@@ -9,7 +9,7 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 
 class LandingPage extends Component {
   state = {
-    heading: `Welcome to Hey, pup! A play-dating app for dogs.`,
+    heading: `Welcome to Hey, Pup!`,
   };
 
   onLogin = (event) => {

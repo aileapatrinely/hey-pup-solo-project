@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Grid, Box } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import './OtherDogs.css';
 
@@ -41,34 +41,40 @@ class OtherDogs extends Component {
           <p align="center" className="tinytxt">
             {item.size} • {item.energy_level} • {item.play_style}
           </p>
-          <h5>About {item.name}:</h5>
-          <p>{item.description}</p>
+          <h5 className="aboutheader">About {item.name}:</h5>
+          <p className="dogdescription">{item.description}</p>
           <div>
-            <Button
-              onClick={this.backItUp}
-              className="btnlft"
-              variant="contained"
-              color="primary"
-            >
-              Back
-            </Button>
-            <Button
-              onClick={this.nextDog}
-              className="btnrt"
-              variant="contained"
-              color="primary"
-            >
-              Next
-            </Button>
+            <Grid container>
+              <Grid item xs={4}>
+                <button
+                  onClick={this.backItUp}
+                  className="btn btn_sizeFull btnlft"
+                >
+                  Back
+                </button>
+              </Grid>
+              <Grid item xs={3}></Grid>
+              <Grid item xs={4}>
+                <button
+                  onClick={this.nextDog}
+                  className="btn btn_sizeFull btnrt"
+                >
+                  Next
+                </button>
+              </Grid>
+            </Grid>
           </div>
-          <div className="btncenter">
-            <Button
-              onClick={this.chatItUp(item.owner_id)}
-              variant="contained"
-              color="primary"
-            >
-              Chat
-            </Button>
+          <div>
+            <Grid container className="btncenter">
+              <Grid item xs={6}>
+                <button
+                  className="btn btn_sizeFull"
+                  onClick={this.chatItUp(item.owner_id)}
+                >
+                  Chat
+                </button>
+              </Grid>
+            </Grid>
           </div>
         </div>
       );

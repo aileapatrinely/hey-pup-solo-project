@@ -5,6 +5,7 @@ import MyDog from '../MyDog/MyDog';
 import { Button } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
+import './UserPage.css';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -41,12 +42,20 @@ class UserPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="welcomediv">
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
         <MyDog />
-        <div>
+        <div className="useridinfo">
           <p>Your ID is: {this.props.store.user.id}</p>
-          <Button onClick={this.onClickDelete}>Delete Account</Button>
+          <div align="center">
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={this.onClickDelete}
+            >
+              Delete Account
+            </Button>
+          </div>
         </div>
       </div>
     );

@@ -7,7 +7,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "dog" WHERE "dog".owner_id !=$1;`;
+  const queryText = `SELECT * FROM "dog" WHERE "dog".owner_id !=$1 ORDER BY "dog".id ASC;`;
   pool
     .query(queryText, [req.user.id])
     .then((response) => res.send(response.rows))

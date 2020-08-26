@@ -1,4 +1,5 @@
 import React from 'react';
+import './AboutPage.css';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -7,9 +8,10 @@ import React from 'react';
 
 const AboutPage = () => (
   <div>
-    <div>
+    <div className="about">
       <p>
-        This about page is for anyone to read!
+        Welcome to Hey, Pup! A play-dating app for dogs. Finding friends for
+        your furry pal can be tough. Let us help you find a match.
       </p>
     </div>
   </div>
