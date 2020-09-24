@@ -75,6 +75,7 @@ io.on('connection', (socket) => {
         message,
       });
       callbackFxn({ chats: chatRooms });
+      socket.emit(`new_message_${room}`, chatRooms[room]);
       socket.to(room).emit(`new_message_${room}`, chatRooms[room]);
     } catch (err) {
       console.log(err);
