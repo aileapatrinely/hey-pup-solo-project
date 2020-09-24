@@ -75,7 +75,6 @@ io.on('connection', (socket) => {
         message,
       });
       callbackFxn({ chats: chatRooms });
-      socket.emit(`new_message_${room}`, chatRooms[room]);
       socket.to(room).emit(`new_message_${room}`, chatRooms[room]);
     } catch (err) {
       console.log(err);
@@ -90,7 +89,6 @@ io.on('connection', (socket) => {
   socket.on('JOIN_CHAT', (data, callbackFxn) => {
     try {
       const { displayName, room } = data;
-      socket.join(room);
 
       if (!chatRooms[room]) {
         chatRooms[room] = {
@@ -100,6 +98,8 @@ io.on('connection', (socket) => {
       } else if (chatRooms[room].users.length < 2) {
         chatRooms[room].users.push(displayName);
       }
+      socket.emit(`new_message_${room}`, chatRooms[room]);
+      socket.join(room);
 
       callbackFxn({ chats: chatRooms });
     } catch (err) {
