@@ -75,6 +75,7 @@ io.on('connection', (socket) => {
         message,
       });
       callbackFxn({ chats: chatRooms });
+      //emits messages to user and all other members of room
       socket.emit(`new_message_${room}`, chatRooms[room]);
       socket.to(room).emit(`new_message_${room}`, chatRooms[room]);
     } catch (err) {
@@ -99,6 +100,7 @@ io.on('connection', (socket) => {
       } else if (chatRooms[room].users.length < 2) {
         chatRooms[room].users.push(displayName);
       }
+      //join user to chatroom and emit all messages in room
       socket.emit(`new_message_${room}`, chatRooms[room]);
       socket.join(room);
 
