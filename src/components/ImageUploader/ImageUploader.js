@@ -11,7 +11,7 @@ class ImageUploader extends Component {
   };
   render() {
     const uploadOptions = {
-      server: 'http://localhost:5000',
+      server: 'https://heypup.herokuapp.com',
       //   signingUrlQueryParams: {
       //     uploadType: 'avatar',
       //   },
